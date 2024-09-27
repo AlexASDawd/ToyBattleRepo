@@ -7,7 +7,7 @@ public class InteractableObject : MonoBehaviour
 {
     
     [SerializeField] private Gesture _gesture;
-    [SerializeField] private float _forceMultiplier = 1f;
+    [SerializeField] private float _forceMultiplier = 3000f;
     [SerializeField] private ParticleSystem _interactEffect;
     [SerializeField] private Vector3 _offsetVector;
     [SerializeField] private float _interactionDelay = 0.05f;

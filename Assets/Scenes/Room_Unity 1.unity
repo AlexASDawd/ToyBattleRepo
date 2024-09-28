@@ -6783,6 +6783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1354925382}
   - component: {fileID: 1354925381}
+  - component: {fileID: 1354925383}
   m_Layer: 0
   m_Name: Point light (1)
   m_TagString: Untagged
@@ -6867,6 +6868,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 15.000001, z: 0}
+--- !u!114 &1354925383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354925380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1362299848
 GameObject:
   m_ObjectHideFlags: 0
@@ -11298,7 +11322,7 @@ Transform:
   m_GameObject: {fileID: 2077257921}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.03, z: -2.06}
+  m_LocalPosition: {x: -0.244, y: 2.729, z: -3.859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12521,7 +12545,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7369906037751654160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8c97b7cf01f7fd4481a623e2bee3f88, type: 3}
   m_Name: 
@@ -12813,7 +12837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _difficultyCorrection: 3
   _sceneHandler: {fileID: 0}
-  _slider: {fileID: 686762695715675636}
+  _slider: {fileID: 8839297527003983344}
 --- !u!4 &953197392624148241
 Transform:
   m_ObjectHideFlags: 0
@@ -15210,7 +15234,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!1 &3279853399181014187
 GameObject:
@@ -16082,7 +16106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _difficultyCorrection: 6
   _sceneHandler: {fileID: 0}
-  _slider: {fileID: 4761383612112598304}
+  _slider: {fileID: 7658314470881849395}
 --- !u!33 &4084352660492066089
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16784,7 +16808,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6895720492060805734}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8c97b7cf01f7fd4481a623e2bee3f88, type: 3}
   m_Name: 
@@ -19586,6 +19610,7 @@ GameObject:
   - component: {fileID: 2844480550915245092}
   - component: {fileID: 7658314470881849394}
   - component: {fileID: 4761383612112598304}
+  - component: {fileID: 7658314470881849395}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -20138,6 +20163,7 @@ GameObject:
   - component: {fileID: 8714402909656966624}
   - component: {fileID: 8839297527003983343}
   - component: {fileID: 686762695715675636}
+  - component: {fileID: 8839297527003983344}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -20478,6 +20504,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7658314470881849395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895720492060805734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db1b28bffb39641b5aa6cbb2e0dd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 7658314470881849394}
+  _smoothTime: 0.2
 --- !u!1 &7660987952561444234
 GameObject:
   m_ObjectHideFlags: 0
@@ -21961,6 +22001,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8839297527003983344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369906037751654160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db1b28bffb39641b5aa6cbb2e0dd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 8839297527003983343}
+  _smoothTime: 0.2
 --- !u!4 &8887270783920994802
 Transform:
   m_ObjectHideFlags: 0

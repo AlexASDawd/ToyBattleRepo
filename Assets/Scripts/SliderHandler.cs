@@ -28,4 +28,6 @@ public class SliderHandler : MonoBehaviour
     public void CalculateIncrement(int toysCountCorrected) {
         _sliderIncrement = 1 / (float)toysCountCorrected;
     }
+
+    
 }

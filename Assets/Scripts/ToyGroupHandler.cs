@@ -6,7 +6,7 @@ public class ToyGroupHandler : MonoBehaviour
 {
     [SerializeField] private int _difficultyCorrection = 0;
     [SerializeField] private SceneHandler _sceneHandler;
-    [SerializeField] private SliderHandler _slider;
+    [SerializeField] private NewSliderHandler _slider;
     private InteractableObject[] _toys;
     private int _toysCount;
     private int _groupIndex;

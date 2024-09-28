@@ -25,13 +25,13 @@ public class ToyGroupHandler : MonoBehaviour
         //    _slider.CalculateIncrement(_toysCount - _difficultyCorrection);
         //}
 
-        if (_slider) {
+        if (_slider.isActiveAndEnabled) {
             _slider.CalculateIncrement(_numberOfTriggersToWin);
         }
     }
     public void AddOneToTriggerCount() {
         _triggerCount++;
-        if (_slider) {
+        if (_slider.isActiveAndEnabled) {
             _slider.AdjustSliderValue();
         }
     }

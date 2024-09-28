@@ -9,7 +9,7 @@ public class ToyGroupHandler : MonoBehaviour
     [SerializeField] private NewSliderHandler _slider;
     private InteractableObject[] _toys;
     private int _toysCount;
-    private int _groupIndex;
+    private int _numberOfTriggersToWin;
 
     private int _triggerCount = 0;
 
@@ -19,16 +19,20 @@ public class ToyGroupHandler : MonoBehaviour
         _toysCount = _toys.Length;
     }
     private void Start() {
-        _groupIndex = _sceneHandler.AddToGroupList(this);
-        _slider.CalculateIncrement(_toysCount - _difficultyCorrection);
+        _numberOfTriggersToWin = _toysCount - _difficultyCorrection;
+
+        //if(_slider != null) {
+        //    _slider.CalculateIncrement(_toysCount - _difficultyCorrection);
+        //}
+
+        if (_slider) {
+            _slider.CalculateIncrement(_numberOfTriggersToWin);
+        }
     }
     public void AddOneToTriggerCount() {
         _triggerCount++;
-        _slider.AdjustSliderValue();
-        _sceneHandler.UpdateTriggerCount(_triggerCount, _groupIndex);
-    }
-
-    public void GetIndex(int index) {
-        _groupIndex = index;
+        if (_slider) {
+            _slider.AdjustSliderValue();
+        }
     }
 }

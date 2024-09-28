@@ -67,9 +67,9 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    public void UpdateForce(float value) {
-        _forceMultiplier = value;
-    }
+    //public void UpdateForce(float value) {
+    //    _forceMultiplier = value;
+    //}
 
     
 }

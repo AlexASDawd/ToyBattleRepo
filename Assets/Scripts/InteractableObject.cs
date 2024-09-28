@@ -12,6 +12,7 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private Vector3 _offsetVector;
     [SerializeField] private float _interactionDelay = 0.05f;
 
+    private AudioManager _audioManager;
     private ToyGroupHandler _parentToyGroup;
     private float _timeSinceLastInteraction = 0;
     private Vector3 _forceVector = Vector3.forward;
@@ -31,6 +32,7 @@ public class InteractableObject : MonoBehaviour
 
     void Start()
     {
+        _audioManager = GetComponent<AudioManager>();
         _rb = GetComponent<Rigidbody>();
         _parentToyGroup = GetComponentInParent<ToyGroupHandler>();
     }
@@ -54,6 +56,7 @@ public class InteractableObject : MonoBehaviour
     }
     public void Interact() {
         Instantiate(_interactEffect, transform);
+        _audioManager.PlayInteractionSound();
         _isInteracting = true;
     }
 

@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
     }
 
     private void UnMute() {
+        _interactSource.enabled = true;
         _isMuted = false; 
     }
 }

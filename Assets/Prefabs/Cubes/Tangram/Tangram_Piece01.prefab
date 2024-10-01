@@ -111,7 +111,6 @@ MonoBehaviour:
   _forceMultiplier: 3000
   _interactEffect: {fileID: 8441247003258120278, guid: a9da837962f7c2a429697a8c63dc83e5,
     type: 3}
-  _offsetVector: {x: 0, y: 0, z: 0}
   _interactionDelay: 0.05
 --- !u!1 &3594721793751001056
 GameObject:
@@ -281,6 +280,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8e0b3c7579c5dac4ab239c851e9869d4, type: 2}
+  - {fileID: 2100000, guid: 8bcaa613cee590847ac65d479fed9206, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -11,15 +11,17 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private ParticleSystem _interactEffect;
     [SerializeField] private float _interactionDelay = 0.05f;
 
+    private delegate void InteractionDelegate();
+    private InteractionDelegate _interaction;
+
     private AudioManager _audioManager;
     private ToyGroupHandler _parentToyGroup;
     private float _timeSinceLastInteraction = 0;
     private Vector3 _forceVector = Vector3.forward;
-    
     private Rigidbody _rb;
-
     private bool _isInteracting = false;
     private bool _isTriggered = false;
+
 
     private void OnEnable() {
         _gesture.StateChanged += InteractionHandler;
@@ -31,6 +33,9 @@ public class InteractableObject : MonoBehaviour
 
     void Start()
     {
+        if (_interaction == null) {
+            _interaction = RegularInteraction;
+        }
         _audioManager = GetComponent<AudioManager>();
         _rb = GetComponent<Rigidbody>();
         _parentToyGroup = GetComponentInParent<ToyGroupHandler>();
@@ -53,22 +58,33 @@ public class InteractableObject : MonoBehaviour
             _isTriggered = true;
         }
     }
-    public void Interact() {
+    private void Interact() {
         Instantiate(_interactEffect, transform);
         _audioManager.PlayInteractionSound();
         _isInteracting = true;
     }
 
+
+    private void RegularInteraction() {
+        Interact();
+        Debug.Log("RegularInteratcion");
+    }
+
+    private void MenuInteraction() {
+        Interact();
+        _parentToyGroup.ChangeScene();
+        Debug.Log("MenuInteratcion");
+    }
     public void InteractionHandler(object sender, GestureStateChangeEventArgs e) {
         if(_timeSinceLastInteraction > _interactionDelay) {
-            Interact();
+            _interaction?.Invoke();
             _timeSinceLastInteraction = 0;
         }
     }
 
-    //public void UpdateForce(float value) {
-    //    _forceMultiplier = value;
-    //}
+    public void SetMenuInteraction() {
+        _interaction = MenuInteraction;
+    }
 
     
 }

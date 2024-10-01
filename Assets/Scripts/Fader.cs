@@ -7,15 +7,11 @@ public class Fader : MonoBehaviour
 {
     [SerializeField] private Image _faderImage;
     public float FadeTime = 3f;
-    //private float _maxAlpha = 100;
-    //private float _minAlpha = 0;
-    //private float _currentAlpha;
-
-
-
+    private Coroutine _coroutine;
 
     void Start() {
-        StartCoroutine(FadeTo(0f, 2f));
+
+        _coroutine = StartCoroutine(FadeTo(0f, FadeTime));
     }
 
     public IEnumerator FadeTo(float targetAlpha, float duration) {
@@ -37,12 +33,18 @@ public class Fader : MonoBehaviour
         startColor.a = targetAlpha;
         _faderImage.color = startColor;
     }
-
+    
     public void FadeIn() {
-        StartCoroutine(FadeTo(1f, 2));
-    }
+        if (_coroutine != null) {
+            StopCoroutine(_coroutine);
+        }
+        _coroutine = StartCoroutine(FadeTo(1f, FadeTime));
 
+    }
     public void FadeOut() {
-        StartCoroutine(FadeTo(0, 2));
+        if (_coroutine != null) {
+            StopCoroutine(_coroutine);
+        }
+        _coroutine = StartCoroutine(FadeTo(0, FadeTime));
     }
 }

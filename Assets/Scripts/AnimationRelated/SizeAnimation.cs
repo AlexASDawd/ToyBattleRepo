@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class SizeAnimation : MonoBehaviour
 {
-    public AnimationCurve sizeCurve; // The curve controlling the size
-    public float animationDuration = 2.0f; // Duration of the animation
+    [SerializeField] private AnimationCurve sizeCurve; // The curve controlling the size
+    [SerializeField] private float _animationDuration = 2.0f; // Duration of the animation
     private Coroutine _animationCoroutine;
 
     public void TriggerSizeAnimation() {
-        if (_animationCoroutine != null) {
-            StopCoroutine(_animationCoroutine);
+        if (_animationCoroutine == null) {
+            _animationCoroutine = StartCoroutine(AnimateSize());
         }
-        _animationCoroutine = StartCoroutine(AnimateSize());
+        
     }
 
     // Coroutine that performs the size animation
     private IEnumerator AnimateSize() {
         float elapsedTime = 0.0f;
-
-        while (elapsedTime < animationDuration) {
+        Invoke(nameof(SetCoroutineToNull), _animationDuration);
+        while (elapsedTime < _animationDuration) {
             // Calculate the normalized time (0 to 1)
-            float normalizedTime = elapsedTime / animationDuration;
+            float normalizedTime = elapsedTime / _animationDuration;
 
             // Get the size factor from the Animation Curve
             float sizeFactor = sizeCurve.Evaluate(normalizedTime);
@@ -38,5 +38,9 @@ public class SizeAnimation : MonoBehaviour
 
         // Ensure the final size is set
         transform.localScale = new Vector3(sizeCurve.Evaluate(1.0f), sizeCurve.Evaluate(1.0f), sizeCurve.Evaluate(1.0f));
+        
+    }
+    private void SetCoroutineToNull() {
+        _animationCoroutine = null;
     }
 }

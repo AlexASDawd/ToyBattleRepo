@@ -7,18 +7,28 @@ public class SceneHandler : MonoBehaviour
 {
     [SerializeField] private List<ToyGroupHandler> _toyGroups;
     [SerializeField] private Fader _fader;
-    
-
-    public void ReloalSceneHandler() {
+    [SerializeField] private int _sceneToLoad = 1;
+    public bool _isMenuScene = false;
+    private bool _gameIsEnded = false;
+    public void LoadSceneHandler() {
         _fader.FadeIn();
-        Invoke(nameof(ReloadScene), _fader.FadeTime);
+        Invoke(nameof(LoadScene), _fader.FadeTime);
     }
-    private void ReloadScene() {
-        SceneManager.LoadScene(0);
+    private void LoadScene() {
+        SceneManager.LoadScene(_sceneToLoad);
     }
 
     public void Quit() {
         Application.Quit();
+    }
+
+    public void EndGame(int sceneIndex) {
+        if (!_gameIsEnded) {
+            Debug.Log("LoadingScene");
+            _sceneToLoad = sceneIndex;
+            _gameIsEnded = true;
+            LoadSceneHandler();
+        }
     }
 
 }

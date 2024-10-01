@@ -9,6 +9,7 @@ public class NewSliderHandler : MonoBehaviour {
     private Coroutine _sliderCoroutine;
     private float _sliderVelocity = 0.0f; // Velocity of the smooth damp operation
     [SerializeField]  private float _smoothTime = 0.2f; // Time it takes to smooth the value
+    [SerializeField] private SizeAnimation _sliderAnimation;
 
     private void Start() {
         UpdateSliderValue();
@@ -18,6 +19,9 @@ public class NewSliderHandler : MonoBehaviour {
         _slider.value = _sliderValue;
     }
 
+    public void ActivateAnimation() {
+        _sliderAnimation.TriggerSizeAnimation();
+    }
     public void AdjustSliderValue() {
         _sliderValue += _sliderIncrement;
 

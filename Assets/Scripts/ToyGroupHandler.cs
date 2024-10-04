@@ -6,14 +6,13 @@ public class ToyGroupHandler : MonoBehaviour
 {
     [SerializeField] private float _difficultyPercent = 0.7f;
     [SerializeField] private SceneHandler _sceneHandler;
-    [SerializeField] private NewSliderHandler _slider;
+    private NewSliderHandler _slider;
 
     
     [SerializeField] private int _requairedSceneIndex = 1;
     private InteractableObject[] _toys;
     private float _toysCount;
     private int _numberOfTriggersToWin;
-
     private int _triggerCount = 0;
 
     private void Awake() {
@@ -26,12 +25,17 @@ public class ToyGroupHandler : MonoBehaviour
         }
         _toysCount = _toys.Length;
     }
-    private void Start() {
-        _numberOfTriggersToWin = Mathf.RoundToInt(_toysCount * _difficultyPercent);
 
+    
+    private void Start() {
+        
+        _numberOfTriggersToWin = Mathf.RoundToInt(_toysCount * _difficultyPercent);
+        _slider = GetComponentInParent<SliderRef>().SliderReference.GetComponent<NewSliderHandler>();
+        
         if (_slider.isActiveAndEnabled) {
             _slider.CalculateIncrement(_numberOfTriggersToWin);
         }
+
     }
     public void AddOneToTriggerCount() {
         
@@ -50,5 +54,7 @@ public class ToyGroupHandler : MonoBehaviour
     public void ChangeScene() {
         _sceneHandler.EndGame(_requairedSceneIndex);
     }
-
+    public void SetSliderRef() {
+        
+    }
 }

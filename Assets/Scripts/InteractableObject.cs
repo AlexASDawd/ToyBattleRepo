@@ -31,6 +31,7 @@ public class InteractableObject : MonoBehaviour
         _gesture.StateChanged -= InteractionHandler;
     }
 
+    
     void Start()
     {
         if (_interaction == null) {

@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gesture: {fileID: 5438079342028791557}
-  _forceMultiplier: 3000
+  _forceMultiplier: 4500
   _interactEffect: {fileID: 8441247003258120278, guid: a9da837962f7c2a429697a8c63dc83e5,
     type: 3}
   _interactionDelay: 0.05

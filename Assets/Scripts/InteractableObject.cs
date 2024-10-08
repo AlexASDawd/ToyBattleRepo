@@ -17,7 +17,8 @@ public class InteractableObject : MonoBehaviour
     private AudioManager _audioManager;
     private ToyGroupHandler _parentToyGroup;
     private float _timeSinceLastInteraction = 0;
-    private Vector3 _forceVector = Vector3.forward;
+    [SerializeField] Vector3 _forceVector = Vector3.forward;
+    //private Vector3 _forceVector = Vector3.forward;
     private Rigidbody _rb;
     private bool _isInteracting = false;
     private bool _isTriggered = false;

@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class MaterialSetter : MonoBehaviour
 {
+    [SerializeField] private bool _isMenuChar = false;
     private MaterialHolder _materialHolder;
-    private GameObject _childObject;
+    private GameObject _object;
     private Material _materialForChildObject;
 
     private void Awake() {
         _materialHolder = FindObjectOfType<MaterialHolder>();
-        _childObject = transform.GetChild(0).gameObject;
+        if (_isMenuChar) {
+            _object = transform.gameObject;
+        } else {
+            _object = transform.GetChild(0).gameObject;
+        }
+        
         _materialForChildObject = _materialHolder.GetRandomMaterial();
 
 
     }
     private void Start() {
-        if(_childObject.TryGetComponent(out Renderer renderer)) {
+        if(_object.TryGetComponent(out Renderer renderer)) {
             renderer.material = _materialForChildObject;
         } else {
-            _childObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = _materialForChildObject;
+            _object.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = _materialForChildObject;
         }
     }
 }

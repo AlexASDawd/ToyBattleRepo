@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class NewSliderHandler : MonoBehaviour {
     [SerializeField] private Slider _slider;
-    private float _sliderValue = 0;
+    private float _sliderValue = 0.055f;
     private float _sliderIncrement;
     private Coroutine _sliderCoroutine;
     private float _sliderVelocity = 0.0f; // Velocity of the smooth damp operation
@@ -20,7 +20,9 @@ public class NewSliderHandler : MonoBehaviour {
     }
 
     public void ActivateAnimation() {
-        _sliderAnimation.TriggerSizeAnimation();
+        if (_sliderAnimation.isActiveAndEnabled) {
+            _sliderAnimation.TriggerSizeAnimation();
+        }
     }
     public void AdjustSliderValue() {
         _sliderValue += _sliderIncrement;

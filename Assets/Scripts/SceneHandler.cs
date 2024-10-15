@@ -9,6 +9,13 @@ public class SceneHandler : MonoBehaviour
     [SerializeField] private Fader _fader;
     [SerializeField] private int _sceneToLoad = 1;
     [SerializeField] private AudioSource _winSound;
+
+    [SerializeField] private int _timeBeforeChangeScene = 3;
+
+    [SerializeField] private CongratsMessage _congratsMessage;
+
+    public bool canShowMessage = true;
+
     public bool _isMenuScene = false;
     private bool _gameIsEnded = false;
     public void LoadSceneHandler() {
@@ -26,11 +33,14 @@ public class SceneHandler : MonoBehaviour
     public void EndGame(int sceneIndex) {
         if (!_gameIsEnded) {
 
+            if (_congratsMessage != null) {
+                _congratsMessage.StartSequence();
+            }
+
             _winSound.Play();
-            Debug.Log("LoadingScene");
             _sceneToLoad = sceneIndex;
             _gameIsEnded = true;
-            LoadSceneHandler();
+            Invoke(nameof(LoadSceneHandler), _timeBeforeChangeScene);
         }
     }
 

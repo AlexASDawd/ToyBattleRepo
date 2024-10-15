@@ -28,7 +28,6 @@ public class ToyGroupHandler : MonoBehaviour
 
     
     private void Start() {
-        
         _numberOfTriggersToWin = Mathf.RoundToInt(_toysCount * _difficultyPercent);
         _slider = GetComponentInParent<SliderRef>().SliderReference.GetComponent<NewSliderHandler>();
         
@@ -47,7 +46,13 @@ public class ToyGroupHandler : MonoBehaviour
         if(_triggerCount >= _numberOfTriggersToWin) {
 
             _slider.ActivateAnimation();
+
             _sceneHandler.EndGame(0);
+            if (_sceneHandler.canShowMessage) {
+                GetComponentInParent<MessageHook>().ActivateMessage();
+                _sceneHandler.canShowMessage = false;
+            }
+
         }
     }
 

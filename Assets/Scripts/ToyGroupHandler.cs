@@ -18,11 +18,11 @@ public class ToyGroupHandler : MonoBehaviour
     private void Awake() {
         _sceneHandler = FindObjectOfType<SceneHandler>();
         _toys = GetComponentsInChildren<InteractableObject>();
-        if (_sceneHandler._isMenuScene) {
-            foreach (var toy in _toys) {
-                toy.SetMenuInteraction();
-            }
-        }
+        //if (_sceneHandler._isMenuScene) {
+        //    foreach (var toy in _toys) {
+        //        toy.SetMenuInteraction();
+        //    }
+        //}
         _toysCount = _toys.Length;
     }
 
@@ -47,7 +47,7 @@ public class ToyGroupHandler : MonoBehaviour
 
             _slider.ActivateAnimation();
 
-            _sceneHandler.EndGame(0);
+            _sceneHandler.EndGame();
             if (_sceneHandler.canShowMessage) {
                 GetComponentInParent<MessageHook>().ActivateMessage();
                 _sceneHandler.canShowMessage = false;
@@ -56,10 +56,10 @@ public class ToyGroupHandler : MonoBehaviour
         }
     }
 
-    public void ChangeScene() {
-        _sceneHandler.EndGame(_requairedSceneIndex);
-    }
-    public void SetSliderRef() {
+    //public void ChangeScene() {
+    //    _sceneHandler.EndGame(_requairedSceneIndex);
+    //}
+    //public void SetSliderRef() {
         
-    }
+    //}
 }

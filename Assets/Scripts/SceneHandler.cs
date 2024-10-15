@@ -10,15 +10,18 @@ public class SceneHandler : MonoBehaviour
     [SerializeField] private int _sceneToLoad = 1;
     [SerializeField] private AudioSource _winSound;
 
+    [SerializeField] private GameObject _sceneChangeButtons;
+
     [SerializeField] private int _timeBeforeChangeScene = 3;
 
     [SerializeField] private CongratsMessage _congratsMessage;
 
     public bool canShowMessage = true;
 
-    public bool _isMenuScene = false;
+    //public bool _isMenuScene = false;
     private bool _gameIsEnded = false;
-    public void LoadSceneHandler() {
+    public void LoadSceneHandler(int index) {
+        _sceneToLoad = index;
         _fader.FadeIn();
         Invoke(nameof(LoadScene), _fader.FadeTime);
     }
@@ -30,7 +33,7 @@ public class SceneHandler : MonoBehaviour
         Application.Quit();
     }
 
-    public void EndGame(int sceneIndex) {
+    public void EndGame() {
         if (!_gameIsEnded) {
 
             if (_congratsMessage != null) {
@@ -38,9 +41,10 @@ public class SceneHandler : MonoBehaviour
             }
 
             _winSound.Play();
-            _sceneToLoad = sceneIndex;
+
             _gameIsEnded = true;
-            Invoke(nameof(LoadSceneHandler), _timeBeforeChangeScene);
+            _sceneChangeButtons.SetActive(true);
+            //Invoke(nameof(LoadSceneHandler), _timeBeforeChangeScene);
         }
     }
 

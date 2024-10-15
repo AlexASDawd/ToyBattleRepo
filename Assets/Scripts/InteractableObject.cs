@@ -72,11 +72,11 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("RegularInteratcion");
     }
 
-    private void MenuInteraction() {
-        Interact();
-        _parentToyGroup.ChangeScene();
-        Debug.Log("MenuInteratcion");
-    }
+    //private void MenuInteraction() {
+    //    Interact();
+    //    _parentToyGroup.ChangeScene();
+    //    Debug.Log("MenuInteratcion");
+    //}
     public void InteractionHandler(object sender, GestureStateChangeEventArgs e) {
         if(_timeSinceLastInteraction > _interactionDelay) {
             _interaction?.Invoke();
@@ -84,9 +84,9 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    public void SetMenuInteraction() {
-        _interaction = MenuInteraction;
-    }
+    //public void SetMenuInteraction() {
+    //    _interaction = MenuInteraction;
+    //}
 
     
 }

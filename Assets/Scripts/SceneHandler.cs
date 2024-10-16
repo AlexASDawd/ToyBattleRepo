@@ -43,9 +43,13 @@ public class SceneHandler : MonoBehaviour
             _winSound.Play();
 
             _gameIsEnded = true;
-            _sceneChangeButtons.SetActive(true);
+            Invoke(nameof(ActivateSceneChangeButtons), 4f);
             //Invoke(nameof(LoadSceneHandler), _timeBeforeChangeScene);
         }
+    }
+
+    private void ActivateSceneChangeButtons() {
+        _sceneChangeButtons.SetActive(true);
     }
 
 }
